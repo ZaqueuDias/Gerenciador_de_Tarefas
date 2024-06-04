@@ -10,13 +10,23 @@ class Tela_Principal extends StatefulWidget {
   State<Tela_Principal> createState() => _Tela_PrincipalState();
 }
 
-List<Widget> criardado(int quanto, {Task? tarefa, Container? caixa}){
+List<Widget> criardado(int quanto, {Task? tarefa, Container? caixa}) {
   print('chamou');
   List<Widget> dados = [];
-  for(int num = 0; num <= quanto; num++){
+  for (int num = 0; num <= quanto; num++) {
     dados.add(Row(
       children: [
-        Center(child: tarefa.runtimeType == Task? Task():Container(width: 20, height: 20, color: Colors.white,))
+        Center(
+            child: tarefa.runtimeType == Task
+                ? Task()
+                : Container(
+                    margin: EdgeInsets.all(10),
+                    width: 50,
+                    height: 70,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white),
+                  ))
       ],
     ));
   }
@@ -28,26 +38,27 @@ class _Tela_PrincipalState extends State<Tela_Principal> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Stack(
-        alignment: AlignmentDirectional.bottomEnd,
         children: [
           Container(
-            alignment: AlignmentDirectional.center,
             color: Colors.blue,
-            child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: criardado(10).length,itemBuilder: (context, int){return criardado(10, caixa: Container())[int];}),
           ),
-          Container(
-            height: 530,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-              color: Colors.white,
-            ),
-            child: ListView.builder(
-              itemCount: criardado(10, tarefa: Task()).length,
-              itemBuilder: (context, int valor) {
-                return criardado(10, tarefa: Task())[valor];
-              },
-            ),
+          Column(
+            children: [
+              Text('data'),
+              Expanded(
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: criardado(10, caixa: Container()).length,
+                      itemBuilder: (context, int) {
+                        return criardado(10)[int];
+                      })),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 500,
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10))),
+                child: ListView.builder(itemCount: criardado(10, tarefa: Task()).length,itemBuilder: (context, int){return criardado(10, tarefa: Task())[int];}),
+              )
+            ],
           )
         ],
       ),
