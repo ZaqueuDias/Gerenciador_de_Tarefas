@@ -26,6 +26,7 @@ List<Widget> criardado(int quanto, {Task? tarefa, Container? caixa}) {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.white),
+              child: Text('$num', style: TextStyle(fontSize: 30),),
                   ))
       ],
     ));
