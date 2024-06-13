@@ -1,15 +1,41 @@
 import 'package:flutter/material.dart';
 
-class Principal extends StatefulWidget {
-  const Principal({super.key});
+import '../componentes/task.dart';
+
+class Tela_Principal extends StatefulWidget {
+  const Tela_Principal({super.key});
 
   @override
-  State<Principal> createState() => _PrincipalState();
+  State<Tela_Principal> createState() => _Tela_PrincipalState();
 }
 
-class _PrincipalState extends State<Principal> {
+class _Tela_PrincipalState extends State<Tela_Principal> {
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.white,);
+    return Column(
+      children: [
+        Container(
+          color: Color.fromRGBO(225, 228, 196, 8),
+          width: MediaQuery.of(context).size.width,
+          height: 200,
+          child: Image.asset('imagens/imagem01.png'),
+        ),
+        Container(
+          height: 512,
+          color: Colors.white,
+          child: ListView.builder(itemCount: gerartaske(10).length,itemBuilder: (contexto, numero){
+          return gerartaske(10)[numero];
+        }),)
+      ],
+    );
   }
+}
+
+
+List<Widget> gerartaske(int quantas){
+  List<Widget> db = [];
+  for(int num = 1; num <= quantas; num ++){
+    db.add(Task());
+  }
+  return db;
 }
