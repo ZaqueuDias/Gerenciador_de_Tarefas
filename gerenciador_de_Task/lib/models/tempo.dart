@@ -29,3 +29,7 @@ class _CalendarioState extends State<Calendario> {
  Text('minutos ${novo.minute}'),
  Text('${teste.weekday}')
 * */
+
+
+// AGRUPAR INFORMAÇÕES SOBRE UM DETERMINADO ASSUNTO.
+
