@@ -51,8 +51,8 @@ class _HorarioState extends State<Horario> {
               padding: const EdgeInsets.all(8.0),
               child: NumberPicker(
                 minValue: 0,
-                maxValue: 23,
-                value: horas,
+                maxValue: 59,
+                value: minutos,
                 zeroPad: true,
                 onChanged: (valor) {minutos = valor; setState(() {});},
                 decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.black), bottom: BorderSide(color: Colors.black))),

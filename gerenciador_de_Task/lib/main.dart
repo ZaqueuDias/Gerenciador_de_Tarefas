@@ -12,6 +12,6 @@ import 'models/tempo.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Data(),));
+    home: Tela_Principal(),));
 }
 
