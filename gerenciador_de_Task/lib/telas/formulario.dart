@@ -5,8 +5,10 @@ import 'package:gerenciador_de_task/telas/data.dart';
 import 'package:gerenciador_de_task/telas/horario.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import '../componentes/decoracao_input.dart';
+import '../models/dados_provider.dart';
 
 class Formulario extends StatefulWidget {
   const Formulario({super.key});
@@ -18,6 +20,7 @@ class Formulario extends StatefulWidget {
 class _FormularioState extends State<Formulario> {
   int horas = 0;
   int minutos = 0;
+  TextEditingController inputdado = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +37,7 @@ class _FormularioState extends State<Formulario> {
               Padding(
                 padding: const EdgeInsets.only(top: 120, left: 8.0, right: 8.0),
                 child: TextFormField(
+                  controller: inputdado,
                     decoration: decoracaoinput('Tarefa do dia...')),
               ),
               Padding(
@@ -80,7 +84,7 @@ class _FormularioState extends State<Formulario> {
               Padding(
                 padding: const EdgeInsets.only(top: 170),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Provider.of<Gerenciador_Atualizacao>(context, listen: false).nomes.add(inputdado.text); Provider.of<Gerenciador_Atualizacao>(context, listen: false).criar_tesk(); Navigator.pop(context);},
                   child: Text(
                     'Concluir',
                     style: TextStyle(color: Colors.white),
